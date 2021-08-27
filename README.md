@@ -12,6 +12,8 @@ The data analytics steps should perform the following:
 - Design a statistical study to **compare** vehicle performance of the MechaCar vehicles against vehicles from other manufacturers. 
 - For each statistical analysis, there will be a **summary interpretation** of the findings.
 
+## Deliverable 1: Linear Regression to Predict MPG
+
 ### The R-Script for Linear Regression model
 
 *load the "dplyr" package*
@@ -77,6 +79,76 @@ F-statistic is a good indicator of whether there is a relationship between the i
 
 *Q3: Does this linear model predict mpg of MechaCar prototypes effectively? Why or why not?*
 
-F-statistic is a good indicator of whether there is a relationship between our predictor and the response variables. The further the F-statistic is from 1 the better it is. In our case, the F-statistic is **22.07** which is relatively larger than 1 and sufficient to reject the null hypothesis (H0 : There is no relationship between `mpg` and `other variables`). 
+  - F-statistic is a good indicator of whether there is a relationship between our predictor and the response variables. The further the F-statistic is from 1 the better it is. In our case, the F-statistic is **22.07** which is relatively larger than 1 and sufficient to reject the null hypothesis (H<sub>0</sub> : There is no relationship between `mpg` and `other variables`). 
+
+## Deliverable-2: Summary Statistics on Suspension Coils
+  
+  ## Summary Statistics on Suspension Coils
+
+  ### Technical Analysis
+
+- In the `MechaCarChallenge.RScript`, import and read in the Suspension_Coil.csv file as a table.
+
+  `> SuspCoil_df <- read.csv(file='Suspension_Coil.csv', check.names = F, stringsAsFactors = F)`
+
+- Write an RScript that creates a `total_summary` dataframe using the `summarize()` function to get the **mean, median, variance**, and **standard deviation** of the suspension coil’s `PSI` column.
+
+  `> total_summary <- summarize(SuspCoil_df, Mean=mean(PSI), Median=median(PSI), Variance=var(PSI), SD=sd(PSI))`
+  
+  ![total_summary](https://user-images.githubusercontent.com/58155187/131073766-909a6fb7-99c3-4ea1-99da-10044b0f26e7.png)
+
+- Write an RScript that creates a `lot_summary` dataframe using the `group_by()` and the `summarize()` functions to group each manufacturing lot by the *mean, median, variance,* and *standard deviation* of the suspension coil’s `PSI` column.
+
+  ![lot_summary](https://user-images.githubusercontent.com/58155187/131074356-d895720a-2fea-44be-af1a-c548ad29c1da.png)
+
+  ### Summary 
+  
+  The design specifications for the MechaCar suspension coils dictate that the variance of the suspension coils must not exceed **100 PSI** (pounds per square inch).
+  
+  Q: *Does the current manufacturing data meet this design specification for all manufacturing lots in total and each lot individually? Why or why not?*
+  
+  Answer: From the `total_summary` table we see than the `Variance` is **62.29** which is the combined variance of all three lots. This value is less than 100 PSI, so acceptable.
+  
+  When we look at the `lot_summary` table which is grouped-by `Manufacturing_Lot`, we find that `Lot3` has a variance of **170.28** which is higher than the acceptable limit of 100 PSI. Therefore, `Lot3` suspension coils may not be accepted as it is.
+  
+## Deliverable 3: T-Tests on Suspension Coils
+
+## T-Tests on Suspension Coils
+
+  ### Technical Analysis
+
+Perform **t-tests** to determine if all manufacturing lots and each lot individually are statistically *different* from the population mean of 1,500 pounds per square inch.
+  
+  - Write an RScript using the t.test() function to determine if the PSI across *all manufacturing lots* is statistically different from the population mean of 1,500 pounds per square inch.
+
+  ![t_test_all_lots](https://user-images.githubusercontent.com/58155187/131078341-a3e24f5b-c436-4798-a22c-97c667384fd0.png)
+
+  - Write three more RScripts in your MechaCarChallenge.RScript using the t.test() function and its subset() argument to determine if the PSI for each manufacturing lot is statistically different from the population mean of 1,500 pounds per square inch.
+
+![t_test_each_lot](https://user-images.githubusercontent.com/58155187/131093772-1c384080-f4c4-4677-8fce-1ea2437e83b9.png)
 
 
+  ### Summary
+  
+  a one-sample t-test is used to test the following hypotheses:
+
+  **H<sub>0</sub>** : There is **no statistical difference** between the observed sample mean and its presumed population mean. 
+
+  **H<sub>a</sub>** : There is a statistical difference between the observed sample mean and its presumed population mean.
+  
+  Assuming our significance level was the common **0.05**, our `p-value` is **1** which is above our significance level. Therefore, we do not have sufficient evidence to reject the null hypothesis, and we would state that the **two means are statistically similar**.
+  
+  `Lot3` has a `p-value` = 0.1589 which is significantly higher than 0.05; that means, true mean for `Lot2` is higher than population mean.
+  
+## Deliverable-4: Design a Study Comparing the MechaCar to the Competition
+
+## Study Design: MechaCar vs Competition
+  
+  - Choice of metric:
+    fuel-efficiency or mpg
+  - Null Hypothesis:
+    H<sub>0</sub> : There is no relationship between `mpg` and `other variables`.
+  - What test and why?
+    Multiple linear regression, because it can process more than two independent variables for one target/dependent variable.
+  - What data is required?
+    We need data where multiple other variables (columns) will have values for different unique samaples which may or may not have any relation with `mpg` of MechaCar.
