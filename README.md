@@ -12,7 +12,7 @@ The data analytics steps should perform the following:
 - Design a statistical study to **compare** vehicle performance of the MechaCar vehicles against vehicles from other manufacturers. 
 - For each statistical analysis, there will be a **summary interpretation** of the findings.
 
-## Deliverable 1: Linear Regression to Predict MPG
+## Deliverable 1: 
 
 ### The R-Script for Linear Regression model
 
@@ -81,7 +81,7 @@ F-statistic is a good indicator of whether there is a relationship between the i
 
   - F-statistic is a good indicator of whether there is a relationship between our predictor and the response variables. The further the F-statistic is from 1 the better it is. In our case, the F-statistic is **22.07** which is relatively larger than 1 and sufficient to reject the null hypothesis (H<sub>0</sub> : There is no relationship between `mpg` and `other variables`). 
 
-## Deliverable-2: Summary Statistics on Suspension Coils
+## Deliverable-2: 
   
   ## Summary Statistics on Suspension Coils
 
@@ -111,7 +111,7 @@ F-statistic is a good indicator of whether there is a relationship between the i
   
   When we look at the `lot_summary` table which is grouped-by `Manufacturing_Lot`, we find that `Lot3` has a variance of **170.28** which is higher than the acceptable limit of 100 PSI. Therefore, `Lot3` suspension coils may not be accepted as it is.
   
-## Deliverable 3: T-Tests on Suspension Coils
+## Deliverable 3: 
 
 ## T-Tests on Suspension Coils
 
@@ -140,15 +140,15 @@ Perform **t-tests** to determine if all manufacturing lots and each lot individu
   
   `Lot3` has a `p-value` = 0.1589 which is significantly higher than 0.05; that means, true mean for `Lot2` is higher than population mean.
   
-## Deliverable-4: Design a Study Comparing the MechaCar to the Competition
+## Deliverable-4: 
 
 ## Study Design: MechaCar vs Competition
   
   - Choice of metric:
-    fuel-efficiency or mpg
+    fuel-efficiency or `mpg`
   - Null Hypothesis:
     H<sub>0</sub> : There is no relationship between `mpg` and `other variables`.
   - What test and why?
     Multiple linear regression, because it can process more than two independent variables for one target/dependent variable.
   - What data is required?
-    We need data where multiple other variables (columns) will have values for different unique samaples which may or may not have any relation with `mpg` of MechaCar.
+    We need data where multiple other variables (columns) will have values for different unique samples which may or may not have any relation with `mpg` of MechaCar.
